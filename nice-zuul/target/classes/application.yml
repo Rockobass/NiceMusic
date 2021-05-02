@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: nice-zuul
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 159.75.12.178:6380
+        group: nice
+
+server:
+  port: 9800
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: nice-auth
+      sensitiveHeaders: "*"
+    test:
+      path: /test/**
+      serviceId: consumer1
+      sensitiveHeaders: "*"
+  retryable: true
+  ignored-services: "*"
+  ribbon:
+    eager-load:
+      enabled: true

@@ -1,0 +1,22 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 159.75.12.178:6380
+        group: nice
+  application:
+    name: testyyy
+
+dubbo:
+  protocol:
+    id: dubbo1
+    name: dubbo
+    port: -1
+  scan:
+    base-packages: org.rockobass.service
+  application:
+    id: test-x
+  cloud:
+    subscribed-services: testyyy

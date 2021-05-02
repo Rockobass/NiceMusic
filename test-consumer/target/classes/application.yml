@@ -1,0 +1,40 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: consumer1
+  cloud:
+    nacos:
+      discovery:
+        group: nice
+        server-addr: 159.75.12.178:6380
+  redis:
+    database: 0
+    host: 159.75.12.178
+    port: 6379
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 5000
+
+dubbo:
+  protocol:
+    name: dubbo
+    id: dubbo2
+    port: -1
+  cloud:
+    subscribed-services: testyyy
+  scan:
+    base-packages: org.rocko.controller
+#security:
+#  oauth2:
+#    resource:
+##      token-info-uri: http://localhost:9800/auth/oauth/check_token
+#      id: ${spring.application.name}
+#      user-info-uri: http://localhost:9800/auth/user
+#    client:
+#      user-authorization-uri: http://localhost:9800/auth/oauth/authorize
